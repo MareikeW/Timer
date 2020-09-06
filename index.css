@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-size: 1.2em;
+}
+
+body, button {
+    font-family: 'Grandstander', cursive;
+}
+
+section {
+    text-align: center;
+}
+
+button {
+    cursor: pointer;
+    padding: 0.8em 1.2em;
+    font-size: 0.8em;
+    font-weight: 700;
+}
+
+/*---- Navigation ----*/
+.nav {
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    margin-bottom: 2em;
+}
+
+.logo {
+    align-self: center;
+    padding: 1em 1.2em;
+}
+
+.navbar {
+    display: flex;
+    list-style: none;
+    background-color: lightblue;
+    justify-content: flex-end;
+}
+
+.navbar__item {
+    padding: 1em 1.2em; 
+}
+
+.navbar__item:hover,
+.navbar__item:focus {
+    cursor: pointer;
+    background-color: lightcoral;
+}
+
+/*---- Timer-Anzeige ----*/
+
+/* Button über der Anzeige */
+.btn--above {
+   background-color: lightsalmon;
+   border-radius: 5px;
+   border: 1px solid salmon;
+   
+}
+
+.btn--above:hover,
+.btn--above:focus {
+    background-color: lightseagreen;
+    border-color: seagreen;
+}
+
+/* Button unter der Anzeige */
+
+/* Anzeige Uhr */
+.display {
+    font-size: 5em;
+    margin: 0.5em 0;
+}

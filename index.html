@@ -3,9 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eieruhr</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@200;300;700&display=swap" rel="stylesheet">
+    <title>P-Uhr</title>
 </head>
 <body>
-    
+    <header>
+        <div class="nav">
+        <div class="logo">P-Uhr</div>
+
+        <nav>
+            <ul class="navbar">
+                <li class="navbar__item">Einstellungen</li>
+                <li class="navbar__item">Tastenkürzel</li>
+            </ul>
+        </nav>
+    </div>
+    </header>
+
+    <section id="timer__section">
+        <div class="display__buttons">
+            <!-- Setzt Anzeige auf 25:00 -->
+            <button class="btn--above">Pomodoro</button>
+            <!-- Setzt Anzeige auf 05:00 -->
+            <button class="btn--above">Kleine Pause</button>
+            <!-- Setzt Anzeige auf 10:00 -->
+            <button class="btn--above">Große Pause</button>
+        </div>
+        <div class="display">
+            <p>25:00</p>
+        </div>
+        <div class="control__buttons">
+            <!-- Startet Countdown -->
+            <button class="btn--below">Beginnen</button>
+            <!-- Stoppt Countdown -->
+            <button class="btn--below">Anhalten</button>
+            <!-- Setzt Anzeige zurück auf Anfangszeit -->
+            <button class="btn--below">Zurücksetzen</button>
+        </div>
+    </section>
+
+    <section id="task__section">
+        <h3 class="task__heading">Momentane Aufgabe</h3>
+        <div class="task--display">
+            <h3>Hausarbeit</h3>
+            <p>0/2</p>
+            <p>Text...</p>
+        </div>
+
+        <div class="new-task">
+            <label for="new-task">+</label>
+            <textarea name="new-task" id="" cols="30" rows="1" placeholder="Meine Aufgabe ist..."></textarea>
+        </div>
+    </section>
+
+    <footer></footer>
 </body>
 </html>
