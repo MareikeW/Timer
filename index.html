@@ -24,22 +24,22 @@
     <section id="timer__section">
         <div class="display__buttons">
             <!-- Setzt Anzeige auf 25:00 -->
-            <button class="btn--above">Pomodoro</button>
+            <button class="btn--above" id="btn-pomodoro">Pomodoro</button>
             <!-- Setzt Anzeige auf 05:00 -->
-            <button class="btn--above">Kleine Pause</button>
+            <button class="btn--above" id="btn-short-break">Kleine Pause</button>
             <!-- Setzt Anzeige auf 10:00 -->
-            <button class="btn--above">Große Pause</button>
+            <button class="btn--above" id="btn-long-break">Große Pause</button>
         </div>
         <div class="display">
-            <p>25:00</p>
+            <p id="display-time">25:00</p>
         </div>
         <div class="control__buttons">
             <!-- Startet Countdown -->
-            <button class="btn--below">Beginnen</button>
+            <button class="btn--below" id="btn-start">Beginnen</button>
             <!-- Stoppt Countdown -->
-            <button class="btn--below">Anhalten</button>
+            <button class="btn--below" id="btn-stop">Anhalten</button>
             <!-- Setzt Anzeige zurück auf Anfangszeit -->
-            <button class="btn--below">Zurücksetzen</button>
+            <button class="btn--below" id="btn-reset">Zurücksetzen</button>
         </div>
     </section>
 
@@ -58,5 +58,7 @@
     </section>
 
     <footer></footer>
+
+    <script src="func.js"></script>
 </body>
 </html>

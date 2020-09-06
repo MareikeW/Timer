@@ -58,20 +58,35 @@ button {
 .btn--above {
    background-color: lightsalmon;
    border-radius: 5px;
-   border: 1px solid salmon;
-   
+   border: 1px solid salmon; 
 }
 
 .btn--above:hover,
 .btn--above:focus {
     background-color: lightseagreen;
     border-color: seagreen;
+    color: white;
 }
 
 /* Button unter der Anzeige */
+.btn--below {
+    background-color: lightskyblue;
+    border: 1px solid blue;
+    border-radius: 10px;
+}
+
+.btn--below:hover,
+.btn--below:focus {
+    background-color: blue;
+    color: white;
+}
 
 /* Anzeige Uhr */
 .display {
     font-size: 5em;
-    margin: 0.5em 0;
+    padding-top: 15px;
+}
+
+#timer__section {
+    margin-bottom: 2em;
 }
