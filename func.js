@@ -28,6 +28,7 @@ function startCountdown(duration) {
 
         displayTime.textContent = minutes + ":" + seconds;
 
+        // stoppt Intervall, wenn keine Sekunden mehr übrig sind
         if (difference === 0) {
             clearInterval(countdown);
         }
