@@ -8,17 +8,17 @@ var displayTime = document.getElementById("display-time");
 
 btnPomodoro.addEventListener("click", function() {
     var duration = 5;
-    startCountdown(duration);
+    startTimer(duration);
 });
 
-function startCountdown(duration) {
-    var startTime = Date.now(),
+function startTimer(duration) {
+    var start = Date.now(),
     difference,
     minutes,
     seconds;
 
     function timer() {
-        difference = duration - (((Date.now() - startTime) / 1000) | 0);
+        difference = duration - (((Date.now() - start) / 1000) | 0);
 
         minutes = (difference / 60) | 0;
         seconds = (difference % 60) | 0;
