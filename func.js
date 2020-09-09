@@ -6,33 +6,52 @@ const btnStop = document.getElementById("btn-stop");
 const btnReset = document.getElementById("btn-reset");
 var displayTime = document.getElementById("display-time");
 
-btnPomodoro.addEventListener("click", function() {
-    var duration = 5;
-    startCountdown(duration);
+var endTime;
+
+btnPomodoro.addEventListener("click",function () {
+    // Gibt die Zeit an, zu der der Countdown zu Ende sein soll. Hier nach 30 Sekunden.
+    // Hier 32, weil es sonst bei 28 Sekunden beginnt zu zählen.
+    endTime = new Date(Date.now() + 1000 * 32);
+    startCountdown(endTime);
 });
 
-function startCountdown(duration) {
-    var startTime = Date.now(),
-    difference,
-    minutes,
-    seconds;
+btnShortBreak.addEventListener("click", function () {
+    endTime = new Date(Date.now() + 1000 * 300);
+    startCountdown(endTime);
+});
 
-    function timer() {
-        difference = duration - (((Date.now() - startTime) / 1000) | 0);
+btnLongBreak.addEventListener("click", function() {
+    endTime = new Date(Date.now() + 1000 * 600);
+    startCountdown(endTime);
+});
 
-        minutes = (difference / 60) | 0;
-        seconds = (difference % 60) | 0;
+btnStop.addEventListener("click", function stopCountdown() {
+    clearInterval(countdown);
+    document.getElementById("display-time").innerHTML = "00:00";
+});
 
+function startCountdown(endTime){
+    // Updatet die Zeitanzeige jede Sekunde
+    var countdown = setInterval(function () {
+        // Gibt heute Zeit an
+        var currentTime = new Date().getTime();
+
+        // Berechnet übrige Zeit zwischen Startzeit und jetziger Zeit
+        var timeLeft = endTime - currentTime;
+
+        // Berechnet die Minuten und Sekunden
+        var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        // Zeigt Minuten und Sekunden im Browser an
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
+        displayTime.innerHTML = minutes + ":" + seconds;
 
-        displayTime.textContent = minutes + ":" + seconds;
-
-        // stoppt Intervall, wenn keine Sekunden mehr übrig sind
-        if (difference === 0) {
+        // Stoppt Intervall, wenn die Zeit um ist
+        if (timeLeft < 0) {
             clearInterval(countdown);
-        }
-    };
-    timer();
-    var countdown = setInterval(timer, 1000);
+            document.getElementById("display-time").innerHTML = "00:00";
+        } 
+    }, 1000);
 }
