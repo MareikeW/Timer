@@ -98,3 +98,38 @@ btnLongBreak.addEventListener("click", function () {
 
 /* -------------------------------------------------------------------- */
 
+// Aufgaben 
+
+var taskArray = [];
+var newTask = "";
+
+const addTaskBtn = document.getElementById("add-task");
+let newTaskContent = document.getElementById("new-task__content");
+let currentTaskHeading = document.getElementById("current-task__heading");
+let taskList = document.getElementById("tasks");
+
+addTaskBtn.addEventListener("click", function () {
+    /*currentTaskHeading.textContent = newTaskContent.value;
+    newTaskContent.value = "";*/
+    addNewTask();
+});
+
+function addNewTask() {
+    newTask = document.createElement("div");
+    newTask.className = "new-tasks-item";
+    newTask.textContent = newTaskContent.value;
+    taskArray.push(newTask);
+    currentTaskHeading.textContent = taskArray[0].textContent;
+    newTask.innerHTML = 
+    `<div class="task-layout">
+    <p><span class="task--delete">x</span></p>
+    <p>${newTask.textContent}</p>
+    </div>`
+    taskList.append(newTask);
+    
+    newTaskContent.value = " ";
+}
+
+document.getElementsByClassName("task--delete").addEventListener("click", function () {
+    
+});
