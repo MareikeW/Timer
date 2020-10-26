@@ -94,3 +94,7 @@ btnLongBreak.addEventListener("click", function () {
     startCountdown(endTime);
 });
 
+
+
+/* -------------------------------------------------------------------- */
+
