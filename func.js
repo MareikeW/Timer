@@ -102,6 +102,7 @@ btnLongBreak.addEventListener("click", function () {
 
 var taskArray = [];
 var newTask = "";
+var newDiv = "";
 
 const addTaskBtn = document.getElementById("add-task");
 let newTaskContent = document.getElementById("new-task__content");
@@ -109,23 +110,22 @@ let currentTaskHeading = document.getElementById("current-task__heading");
 let taskList = document.getElementById("tasks");
 
 addTaskBtn.addEventListener("click", function () {
-    /*currentTaskHeading.textContent = newTaskContent.value;
-    newTaskContent.value = "";*/
     addNewTask();
 });
 
 function addNewTask() {
+    newDiv = document.createElement("div");
+    newDiv.classList = "new-tasks-item";
     newTask = document.createElement("div");
-    newTask.className = "new-tasks-item";
     newTask.textContent = newTaskContent.value;
     taskArray.push(newTask);
     currentTaskHeading.textContent = taskArray[0].textContent;
-    newTask.innerHTML = 
+    newDiv.innerHTML = 
     `<div class="task-layout">
     <p><span class="task--delete">x</span></p>
     <p>${newTask.textContent}</p>
     </div>`
-    taskList.append(newTask);
+    taskList.append(newDiv);
     
     newTaskContent.value = " ";
 }

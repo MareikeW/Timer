@@ -133,13 +133,24 @@ button {
 
 .new-tasks-item {
     padding: 1em;
+    padding-right: 1.3em;
     border-radius: 10px;
     background-color: lightskyblue;
     width: 400px;
     margin-top: 1em;
+    position: relative;
 }
 
 .task--delete {
-    background-color: lightpink;
     font-weight: 800;
+    position: absolute;
+    right: 1%;
+    cursor: pointer;
+    top: 32%;
+    font-size: 1.5em;
+}
+
+.task--delete:hover,
+.task--delete:focus {
+    color: red;
 }
