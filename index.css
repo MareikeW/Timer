@@ -105,7 +105,7 @@ button {
     margin-top: 1em;
 }
 
-#new-task__content {
+#task__content {
     padding: 0.5em 0.8em;
     font-family: inherit;
     margin-left: 1em;
@@ -113,17 +113,17 @@ button {
     border-radius: 10px;
 }
 
-#new-task__content:hover,
-#new-task__content:focus {
+#task__content:hover,
+#task__content:focus {
     border-color: yellow;
 }
 
-#add-task {
+#add-task-btn {
     margin-left: 4em;
 }
 
 #tasks,
-#current-task__heading {
+#current-task {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -141,13 +141,17 @@ button {
     position: relative;
 }
 
+.task--content {
+    padding-top: 1em;
+}
+
 .task--delete {
-    font-weight: 800;
     position: absolute;
+    top: 15%;
     right: 1%;
     cursor: pointer;
-    top: 32%;
-    font-size: 1.5em;
+    font-size: 1.4em;
+    font-weight: 800;
 }
 
 .task--delete:hover,

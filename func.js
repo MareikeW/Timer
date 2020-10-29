@@ -37,28 +37,31 @@ function startCountdown(endTime){
         displayTime.innerHTML = minutes + ":" + seconds;
 
         // Hält den Countdown an, wenn "Anhalten" geklickt wird
-        if (btnStop.addEventListener("click", function () {
-            console.log("Minuten: " + parseInt(minutes));
-            console.log("Sekunden: " + seconds);
-            stopCountdown(countdown, minutes, seconds);
-        }));
-
-        if (btnShortBreak.addEventListener("click", function () {
-            clearInterval(countdown);
-            displayTime.innerHTML = "00:00";
-        }));
-
-        if (btnLongBreak.addEventListener("click", function () {
-            clearInterval(countdown);
-            displayTime.innerHTML = "00:00";
-        }));
-
-        // Stoppt Intervall, wenn die Zeit um ist
-        if (timeLeft < 0) {
-            clearInterval(countdown);
-            displayTime.innerHTML = "00:00";
-        } 
+        timerStopEvents(btnStop, btnShortBreak, btnLongBreak, timeLeft, countdown);
+        
     }, 1000);   
+}
+
+function timerStopEvents(btnStop, btnShortBreak, btnLongBreak, timeLeft, countdown) {
+    if (btnStop.addEventListener("click", function () {
+        stopCountdown(countdown, minutes, seconds);
+    }));
+
+    if (btnShortBreak.addEventListener("click", function () {
+        clearInterval(countdown);
+        displayTime.innerHTML = "00:00";
+    }));
+
+    if (btnLongBreak.addEventListener("click", function () {
+        clearInterval(countdown);
+        displayTime.innerHTML = "00:00";
+    }));
+
+    // Stoppt Intervall, wenn die Zeit um ist
+    if (timeLeft < 0) {
+        clearInterval(countdown);
+        displayTime.innerHTML = "00:00";
+    } 
 }
 
 function stopCountdown(countdown, minutes, seconds) {
@@ -73,7 +76,6 @@ function stopCountdown(countdown, minutes, seconds) {
     }));
 };
 
-
 btnShortBreak.addEventListener("click", function () {
     // stoppt Countdown und setzt ihn zurück
     if (btnLongBreak.addEventListener("click", function (countdown) {
@@ -84,7 +86,6 @@ btnShortBreak.addEventListener("click", function () {
     startCountdown(endTime);
 });
 
-
 btnLongBreak.addEventListener("click", function () {
     if (btnShortBreak.addEventListener("click", function (countdown) {
         clearInterval(countdown);
@@ -94,42 +95,82 @@ btnLongBreak.addEventListener("click", function () {
     startCountdown(endTime);
 });
 
+class Task {
+    constructor () {
+        this.tasks = [];
+        this.id = "";
+        this.task = "";
 
+        this.taskSection = document.getElementById("task__section");
+        this.currentTask = document.getElementById("current-task");
+        this.tasksListSection = document.getElementById("tasks");
+        this.taskContent = document.getElementById("task__content");
+        this.addTaskBtn = document.getElementById("add-task-btn");
+        this.taskDeleteCross = document.getElementsByClassName("task--delete"); 
+        
+        this.submitTask();
+        this.deleteTask();
+    }
 
-/* -------------------------------------------------------------------- */
+    submitTask() {
+        // Type "click" würde es bei jedem Klick hinzufügen
+        this.addTaskBtn = document.addEventListener("submit", event => {
+            this.submitNewTask(event);
+        });
+    }
 
-// Aufgaben 
+    deleteTask() {
+        this.taskDeleteCross = document.addEventListener("click", event => {
+            this.removeTaskFromList(event);
+        })
+    }
 
-var taskArray = [];
-var newTask = "";
-var newDiv = "";
+    submitNewTask(event) {
+        event.preventDefault();
+        const taskContent = this.taskContent.value;
 
-const addTaskBtn = document.getElementById("add-task");
-let newTaskContent = document.getElementById("new-task__content");
-let currentTaskHeading = document.getElementById("current-task__heading");
-let taskList = document.getElementById("tasks");
+        if (taskContent.length > 0) {
+            this.addTask({taskContent})
+        }
+    }
 
-addTaskBtn.addEventListener("click", function () {
-    addNewTask();
-});
+    addTask({taskContent}) {
+        const newTask = {
+            taskContent,
+            id: this.tasks.length > 0 ? this.tasks[this.tasks.length - 1].id + 1 : 1
+        };
+        // Fügt neue Aufgabe ans Ende der Liste
+        this.tasks = [...this.tasks, newTask];
+        // Löscht Eingabe aus Textfeld
+        this.taskContent.value = "";
+        this.displayTasks();
+    }
 
-function addNewTask() {
-    newDiv = document.createElement("div");
-    newDiv.classList = "new-tasks-item";
-    newTask = document.createElement("div");
-    newTask.textContent = newTaskContent.value;
-    taskArray.push(newTask);
-    currentTaskHeading.textContent = taskArray[0].textContent;
-    newDiv.innerHTML = 
-    `<div class="task-layout">
-    <p><span class="task--delete">x</span></p>
-    <p>${newTask.textContent}</p>
-    </div>`
-    taskList.append(newDiv);
-    
-    newTaskContent.value = " ";
+    removeTaskFromList(event){
+        // Wenn nicht das Kreuz geklickt wurde, return.
+        if (!event.target.matches('.task--delete')) return;
+        // Speichert die ID von geklickter Aufgabe in Variable
+        const id = event.target.dataset.id;
+        // Updated task array
+        this.tasks = this.tasks.filter(task => task.id !== Number(id));
+
+        this.displayTasks();
+    }
+
+    displayTasks() {
+        // Zeigt 1. Aufgabe in der Liste über Textfeld an
+        this.currentTask.textContent = this.tasks[0].taskContent;
+
+            this.tasksListSection.innerHTML = this.tasks
+            .map(
+                task => `
+                    <div class="new-tasks-item">
+                    <p><span class="task--delete" data-id=${task.id}>x</span></p>
+                    <p class="task--content">${task.taskContent}</p>
+                    </div>
+                `
+            ).join(""); 
+    }
 }
 
-document.getElementsByClassName("task--delete").addEventListener("click", function () {
-    
-});
+new Task();

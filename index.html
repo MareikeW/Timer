@@ -44,14 +44,14 @@
     <section id="task__section">
         <h3>Momentane Aufgabe</h3>
         <div class="task--display">
-            <h3><span id="current-task__heading">Titel von Aufgabe</span></h3>
+            <h3><span id="current-task">Titel von Aufgabe</span></h3>
         </div>
 
-        <div class="new-task">
+        <form class="new-task">
             <label for="new-task">+</label>
-            <textarea name="new-task" id="new-task__content" cols="30" placeholder="Meine Aufgabe ist..."></textarea>
-            <button id="add-task">Hinzufügen</button>
-        </div>
+            <textarea name="new-task" id="task__content" cols="30" placeholder="Meine Aufgabe ist..."></textarea>
+            <button type="submit" id="add-task-btn">Hinzufügen</button>
+        </form>
 
         <div id="tasks">
 
