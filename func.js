@@ -13,8 +13,8 @@ var seconds;
 
 btnPomodoro.addEventListener("click",function () {
     // Gibt die Zeit an, zu der der Countdown zu Ende sein soll. Hier nach 30 Sekunden.
-    // Hier 32, weil es sonst bei 28 Sekunden beginnt zu zählen.
-    endTime = new Date(Date.now() + 1000 * 302);
+    // Hier 5102, weil es sonst bei 24:28 Sekunden beginnt zu zählen.
+    endTime = new Date(Date.now() + 1000 * 5102);
     startCountdown(endTime);
 });
 
@@ -43,10 +43,13 @@ function startCountdown(endTime){
 }
 
 function timerStopEvents(btnStop, btnShortBreak, btnLongBreak, timeLeft, countdown) {
+    
     if (btnStop.addEventListener("click", function () {
         stopCountdown(countdown, minutes, seconds);
     }));
 
+    // Wenn bereits ein Countdown läuft und Pause geklickt wird,
+    // wird aktiver Countdown gestoppt und neuer gestartet.
     if (btnShortBreak.addEventListener("click", function () {
         clearInterval(countdown);
         displayTime.innerHTML = "00:00";
@@ -56,7 +59,7 @@ function timerStopEvents(btnStop, btnShortBreak, btnLongBreak, timeLeft, countdo
         clearInterval(countdown);
         displayTime.innerHTML = "00:00";
     }));
-
+    
     // Stoppt Intervall, wenn die Zeit um ist
     if (timeLeft < 0) {
         clearInterval(countdown);
@@ -76,6 +79,8 @@ function stopCountdown(countdown, minutes, seconds) {
     }));
 };
 
+// Setzen "Kleine Pause" und "Große Pause" auf ihre Startzeit und 
+// beginnen den Countdown.
 btnShortBreak.addEventListener("click", function () {
     // stoppt Countdown und setzt ihn zurück
     if (btnLongBreak.addEventListener("click", function (countdown) {
@@ -94,6 +99,8 @@ btnLongBreak.addEventListener("click", function () {
     endTime = new Date(Date.now() + 1000 * 602);
     startCountdown(endTime);
 });
+
+
 
 class Task {
     constructor () {
@@ -161,7 +168,7 @@ class Task {
         // Zeigt 1. Aufgabe in der Liste über Textfeld an
         this.currentTask.textContent = this.tasks[0].taskContent;
 
-            this.tasksListSection.innerHTML = this.tasks
+        this.tasksListSection.innerHTML = this.tasks
             .map(
                 task => `
                     <div class="new-tasks-item">
