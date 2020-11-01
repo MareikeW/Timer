@@ -21,6 +21,7 @@ button {
     padding: 0.8em 1.2em;
     font-size: 0.8em;
     font-weight: 700;
+    outline: none;
 }
 
 button:hover,
@@ -33,44 +34,21 @@ textarea {
     color: black;
 }
 
-/*---- Navigation ----*/
-.nav {
-    display: flex;
-    justify-content: space-between;
-    text-transform: uppercase;
-    margin-bottom: 2em;
-}
-
+/*---- Header ----*/
 .logo {
     align-self: center;
     padding: 1em 1.2em;
-}
-
-.navbar {
-    display: flex;
-    list-style: none;
-    background-color: #ffd8be;
-    justify-content: flex-end;
-}
-
-.navbar__item {
-    padding: 1em 1.2em; 
-}
-
-.navbar__item:hover,
-.navbar__item:focus {
-    cursor: pointer;
-    background-color: lightcoral;
 }
 
 /*---- Timer-Anzeige ----*/
 
 /* Button über der Anzeige */
 .btn--above {
-   background-color: #f8f7ff;
-   border-radius: 5px;
-   border: 1px solid #f8f7ff;
-   color: black; 
+    margin-top: 3em;
+    background-color: #f8f7ff;
+    border-radius: 5px;
+    color: black; 
+    margin-bottom: 1em;;
 }
 
 .btn--above:hover,
@@ -81,6 +59,7 @@ textarea {
 
 /* Button unter der Anzeige */
 .btn--below {
+    margin-top: 1em;
     background-color: #9381ff;
     border: 1px solid 9381ff;
     border-radius: 10px;
@@ -90,10 +69,15 @@ textarea {
 .display {
     font-size: 5em;
     padding-top: 15px;
+    margin: 0 auto;
+    background-color: #ffeedd;
+    width: 400px;
+    padding: 0.2em 0;
+    border-radius: 10px;
 }
 
 #timer__section {
-    margin-bottom: 2em;
+    margin-bottom: 5em;
 }
 
 /* Aufgaben */
@@ -132,6 +116,10 @@ textarea {
     align-items: center;
 }
 
+#tasks:last-child {
+    margin-bottom: 4em;
+}
+
 #current-task {
     margin-top: 10px;
 }
@@ -162,4 +150,12 @@ textarea {
 .task--delete:hover,
 .task--delete:focus {
     color: red;
+}
+
+/* Footer */
+footer {
+    position: fixed;
+    width: 100vw;
+    bottom: 0;
+    padding: 1em;
 }
