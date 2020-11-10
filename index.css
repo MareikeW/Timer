@@ -71,7 +71,6 @@ textarea {
     padding-top: 15px;
     margin: 0 auto;
     background-color: #ffeedd;
-    width: 400px;
     padding: 0.2em 0;
     border-radius: 10px;
 }
@@ -102,7 +101,7 @@ textarea {
 }
 
 #add-task-btn {
-    margin-left: 4em;
+    margin-left: 1em;
     border-radius: 10px;
     outline: none;
     background-color: #9381ff;
